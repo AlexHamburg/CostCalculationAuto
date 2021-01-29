@@ -1,3 +1,7 @@
+@import '../../../styles/color';
+@import '../../../styles/font';
+@import '../../../styles/spacing';
+
 .main-page {
     height: 100vh;
     display: flex;
@@ -6,4 +10,25 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center bottom;
+    color: $p-main-color;
+    font-family: $p-font-family;
+
+    .title-cntr {
+        padding: $p-spacing-16;
+        &__title {
+            font-size: $p-font-size-48;
+            padding: $p-spacing-8;
+            margin: 0;
+        }
+    }
+
+    .undertitle-cntr {
+        padding: $p-spacing-16;
+        &__undertitle {
+            font-size: $p-font-size-22;
+            padding: $p-spacing-8;
+            margin: 0;
+            font-weight: bold;
+        }
+    }
 }
