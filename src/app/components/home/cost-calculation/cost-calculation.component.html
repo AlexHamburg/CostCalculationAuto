@@ -1,11 +1,127 @@
 <div class="cost-calculation">
     <div class="title-cntr">
-        <h1 class="title-cntr__title">Cost calculation</h1>
+        <h1 class="title-cntr__title">Kostenberechnung</h1>
     </div>
     <div class="inputs-cntr">
+        <form [formGroup]="costCalculationForm" 
+            (ngSubmit)="submitForm()">
+            
+            <div class="inputs-cntr__group">
+                <mat-form-field>
+                    <mat-label>Preis vom Wagen</mat-label>
+                    <input 
+                        matInput 
+                        formControlName="carPrice" 
+                        placeholder="Preis in Euro">
+                </mat-form-field>
 
+                <mat-form-field>
+                    <mat-label>Besitzdauer (voraussichtlich)</mat-label>
+                    <input 
+                        matInput 
+                        formControlName="owningPeriod" 
+                        placeholder="Besitzdauer in Jahren">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Jährliche Fahrleistung (km.)</mat-label>
+                    <input 
+                        matInput 
+                        formControlName="kmInYear" 
+                        placeholder="Gefahrene km. pro Jahr">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Anzahl der Autowäschen pro Jahr</mat-label>
+                    <input 
+                        matInput 
+                        formControlName="cleanCarInYear" 
+                        placeholder="Anzahl der Autowäschen">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>∅ Preis für eine Autowäsche</mat-label>
+                    <input 
+                        matInput 
+                        formControlName="cleanCarPrice" 
+                        placeholder="∅ Preis für eine Autowäsche">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Wertverlüst pro Jahr</mat-label>
+                    <input 
+                        matInput 
+                        formControlName="lossOfValue" 
+                        placeholder="∅ Wertverlüst pro Jahr in %">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Versicherungskosten pro Jahr</mat-label>
+                    <input 
+                        matInput 
+                        formControlName="insurancePrice" 
+                        placeholder="Versicherungskosten in Euro">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Steuersatz pro Jahr</mat-label>
+                    <input 
+                        matInput 
+                        formControlName="taxYear" 
+                        placeholder="Steuersatz in Euro">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>∅ Kraffstoffverbrauch pro km.</mat-label>
+                    <input 
+                        matInput 
+                        formControlName="fuelConsumptionKm" 
+                        placeholder="Kraffstoffverbrauch pro km.">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>∅ Kraffstoffpreis für l.</mat-label>
+                    <input 
+                        matInput 
+                        formControlName="fuelConsumptionKm" 
+                        placeholder="Kraffstoffpreis Euro für liter">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Opportunitätskosten</mat-label>
+                    <input 
+                        matInput 
+                        formControlName="opportunityCost" 
+                        placeholder="Opportunitätskosten in %">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>∅ Parkplatzskosten in Monat</mat-label>
+                    <input 
+                        matInput 
+                        formControlName="parkplaceCost" 
+                        placeholder="Parkplatzskosten in Euro">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Anzahl der Inspektionen pro Jahr</mat-label>
+                    <input 
+                        matInput 
+                        formControlName="countInspectionsInYear" 
+                        placeholder="Anzahl der Inspektionen pro Jahr">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Preis für eine Inspektion</mat-label>
+                    <input 
+                        matInput 
+                        formControlName="countInspectionsInYear" 
+                        placeholder="Preis für eine Inspektion in Euro">
+                </mat-form-field>
+            </div>
+        </form>
     </div>
     <div class="btn-cntr">
-        <button class="btn-cntr__btn">BTN</button>
+        <button class="btn-cntr__btn">BERECHNEN</button>
     </div>
 </div>

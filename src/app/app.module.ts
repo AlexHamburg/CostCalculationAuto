@@ -8,6 +8,8 @@ import { CostCalculationComponent } from './components/home/cost-calculation/cos
 import { CostResultComponent } from './components/home/cost-result/cost-result.component';
 import { AlternativeOptionsComponent } from './components/home/alternative-options/alternative-options.component';
 import { FooterPageComponent } from './components/home/footer-page/footer-page.component';
+import { MaterialModule } from './material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,10 @@ import { FooterPageComponent } from './components/home/footer-page/footer-page.c
     FooterPageComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

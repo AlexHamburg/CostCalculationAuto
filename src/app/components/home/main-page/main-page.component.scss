@@ -1,34 +1,74 @@
 @import '../../../styles/color';
 @import '../../../styles/font';
 @import '../../../styles/spacing';
+@import '../../../styles/theme';
 
 .main-page {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
     background-image: url(../../../../assets/img/main-page-bg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center bottom;
+    background-position: 70%;
     color: $p-main-color;
     font-family: $p-font-family;
+    text-align: end;
 
     .title-cntr {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: $p-spacing-32;
         padding: $p-spacing-16;
+        text-shadow: 1px 1px 1px $shadow-color;
+        height: 30%;
+
         &__title {
-            font-size: $p-font-size-48;
-            padding: $p-spacing-8;
+            width: 70%;
+            font-size: $p-font-size-x-large;
+            padding: $p-spacing-16;
             margin: 0;
         }
     }
 
     .undertitle-cntr {
         padding: $p-spacing-16;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        text-shadow: 1px 1px 1px $shadow-color;
+        height: 30%;
+
         &__undertitle {
-            font-size: $p-font-size-22;
+            font-size: $p-font-size-large;
             padding: $p-spacing-8;
             margin: 0;
-            font-weight: bold;
+            font-weight: $p-font-weight-bold;
+            width: 50%;
+        }
+    }
+
+    .btn-cntr {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        margin: $p-spacing-32;
+        height: 30%;
+
+        &__btn {
+            font-weight: $p-font-weight-semibold;
+            font-size: $p-font-size-medium;
+            height: 30%;
+            width: 25%;
+            max-height: 70px;
+            max-width: 600px;
+            box-shadow: 1px 1px 1px $shadow-color;
+
+            &:hover {
+                background-color: #ef5350
+            }
         }
     }
 }
