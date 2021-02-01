@@ -1,5 +1,11 @@
+@import '../../../styles/color';
+@import '../../../styles/font';
+@import '../../../styles/spacing';
+
 .alternative-options {
-    height: 100vh;
+    height: 50vh;
     display: flex;
     flex-direction: column;
+    background-color: $bg-light;
+    color: $p-secondary-color-dark;
 }

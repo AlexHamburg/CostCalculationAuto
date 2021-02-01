@@ -6,17 +6,9 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    font-family: $p-font-family;
-
-    .title-cntr {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        
-        &__title {
-            text-shadow: 0.5px 0.5px 0.5px $shadow-color;
-        }
-    }
+    color: $p-secondary-color-dark;
+    justify-content: space-between;
+    background-color: $bg-light;
 
     .inputs-cntr {
         display: flex;
@@ -35,6 +27,7 @@
         width: 100%;
         display: flex;
         justify-content: center;
+        margin-bottom:  $p-spacing-16;
 
         &__btn {
             width: 25%;
