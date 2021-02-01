@@ -2,11 +2,13 @@
     <div class="title-cntr">
         <h1 class="title-cntr__title">Kostenberechnung</h1>
     </div>
-    <div class="inputs-cntr">
-        <form [formGroup]="costCalculationForm" 
-            (ngSubmit)="submitForm()">
-            
+    <form 
+        [formGroup]="costCalculationForm" 
+        (ngSubmit)="submitForm()"
+        novalidate>
+        <div class="inputs-cntr">
             <div class="inputs-cntr__group">
+
                 <mat-form-field>
                     <mat-label>Preis vom Wagen</mat-label>
                     <input 
@@ -46,6 +48,9 @@
                         formControlName="cleanCarPrice" 
                         placeholder="∅ Preis für eine Autowäsche">
                 </mat-form-field>
+            
+            </div>
+            <div class="inputs-cntr__group">
 
                 <mat-form-field>
                     <mat-label>Wertverlüst pro Jahr</mat-label>
@@ -86,6 +91,9 @@
                         formControlName="fuelConsumptionKm" 
                         placeholder="Kraffstoffpreis Euro für liter">
                 </mat-form-field>
+            
+            </div>
+            <div class="inputs-cntr__group">
 
                 <mat-form-field>
                     <mat-label>Opportunitätskosten</mat-label>
@@ -119,9 +127,13 @@
                         placeholder="Preis für eine Inspektion in Euro">
                 </mat-form-field>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
     <div class="btn-cntr">
-        <button class="btn-cntr__btn">BERECHNEN</button>
+        <button mat-flat-button 
+            color="primary"
+            class="btn-cntr__btn">
+            BERECHNEN
+        </button>
     </div>
 </div>

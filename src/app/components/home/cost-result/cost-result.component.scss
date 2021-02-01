@@ -1,5 +1,10 @@
+@import '../../../styles/color';
+@import '../../../styles/font';
+@import '../../../styles/spacing';
+
 .cost-result-page {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    font-family: $p-font-family;
 }

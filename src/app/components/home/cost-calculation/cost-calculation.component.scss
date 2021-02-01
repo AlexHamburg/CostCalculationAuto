@@ -1,5 +1,51 @@
+@import '../../../styles/color';
+@import '../../../styles/font';
+@import '../../../styles/spacing';
+
 .cost-calculation {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    font-family: $p-font-family;
+
+    .title-cntr {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        
+        &__title {
+            text-shadow: 0.5px 0.5px 0.5px $shadow-color;
+        }
+    }
+
+    .inputs-cntr {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+
+        &__group {
+            display: flex;
+            flex-direction: column;
+            width: 30%;
+            margin: $p-spacing-16;
+        }
+    }
+
+    .btn-cntr {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        &__btn {
+            width: 25%;
+            font-size: $p-font-size-small;
+            max-height: 70px;
+            max-width: 600px;
+            box-shadow: 1px 1px 1px $shadow-color;
+
+            &:hover {
+                background-color: #ef5350
+            }
+        }
+    }
 }
