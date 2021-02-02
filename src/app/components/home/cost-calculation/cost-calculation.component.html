@@ -16,6 +16,11 @@
                         formControlName="carPrice" 
                         placeholder="Preis in Euro">
                 </mat-form-field>
+                <p 
+                    *ngIf="costCalculationForm.controls['carPrice']?.hasError('pattern') && (costCalculationForm.controls['carPrice'].dirty || costCalculationForm.controls['carPrice'].touched)" 
+                    class="text-danger">
+                    Number Only
+                </p>
 
                 <mat-form-field>
                     <mat-label>Besitzdauer (voraussichtlich)</mat-label>
