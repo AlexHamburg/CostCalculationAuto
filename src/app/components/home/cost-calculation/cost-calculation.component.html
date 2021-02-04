@@ -3,6 +3,7 @@
         <h1 class="title-cntr__title">Kostenberechnung</h1>
     </div>
     <form 
+        class="inputs-form"
         [formGroup]="costCalculationForm" 
         (ngSubmit)="submitForm()"
         novalidate>
@@ -62,12 +63,13 @@
                 </div>
             </div>
         </div>
+        <div class="btn-cntr">
+            <button mat-flat-button 
+                color="primary"
+                class="btn-cntr__btn"
+                type="submit">
+                BERECHNEN
+            </button>
+        </div>
     </form>
-    <div class="btn-cntr">
-        <button mat-flat-button 
-            color="primary"
-            class="btn-cntr__btn">
-            BERECHNEN
-        </button>
-    </div>
 </div>

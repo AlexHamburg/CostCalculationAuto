@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UtilityService } from '../../../services/utility.service';
+import { SnackbarComponent } from '../../snackbar/snackbar.component';
 
 @Component({
   selector: 'app-cost-calculation',
@@ -8,6 +9,7 @@ import { UtilityService } from '../../../services/utility.service';
   styleUrls: ['./cost-calculation.component.scss']
 })
 export class CostCalculationComponent {
+  private static readonly INPUT_REGEX_DIGIT: string = '^[0-9]+(.|,)?[0-9]*$';
   costCalculationForm: FormGroup;
   firstInputGroup: InputMetadata[] =
     [
@@ -88,11 +90,10 @@ export class CostCalculationComponent {
         placeholder: "Preis für eine Inspektion in Euro"
       }
     ];
-
-  private static readonly INPUT_REGEX_DIGIT: string = '^[0-9]+(.|,)?[0-9]*$';
   
   constructor(private formBuilder: FormBuilder,
-    private utilityService: UtilityService) {
+    private utilityService: UtilityService,
+    private snackbarComponent: SnackbarComponent) {
     this.costCalculationForm = this.formBuilder.group({
       carPrice: ['', [Validators.required, Validators.pattern(CostCalculationComponent.INPUT_REGEX_DIGIT)]],
       owningPeriod: ['', 
@@ -118,7 +119,17 @@ export class CostCalculationComponent {
    }
 
    submitForm() {
-     
+    if (!this.costCalculationForm.valid) {
+      this.snackbarComponent.show("Alle Pflichteingaben (Preis vom Wagen und Besitzdauer) sollen gemacht werden.", "Error");
+    } else {
+      const carPrice: string = this.costCalculationForm.get('carPrice')?.value;
+      const preparedCarPrice: number = this.prepareInputsValue(carPrice);
+      
+    }
+   }
+
+   private prepareInputsValue(value: string): number {
+    return value.indexOf(',') >= 0 ? +value.replace(',', '.') : +value;
    }
 
 }
