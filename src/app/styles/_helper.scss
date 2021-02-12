@@ -1,4 +1,4 @@
-@import "internal";
+@import 'internal';
 
 /**
  * Converts px to rem unit
@@ -59,7 +59,6 @@
  * @param $font-size - only accepts value in rem or px, e.g. 12px or 1.5rem
  */
 @function p-calculate-line-height($font-size) {
-
   @if __p-is-rem($font-size) {
     $font-size: p-rem-to-px($font-size);
   } @else if __p-is-px($font-size) {
@@ -70,7 +69,8 @@
 
   $font-size: __p-strip-unit($font-size);
   $e: 2.71828;
-  $exact-line-height-factor: 0.911 / ( 2.97 + 0.005 * __p-pow( $e, 0.2 * $font-size ) ) + 1.2;
+  $exact-line-height-factor: 0.911 /
+    (2.97 + 0.005 * __p-pow($e, 0.2 * $font-size)) + 1.2;
   $exact-line-height-px: $font-size * $exact-line-height-factor;
   $remaining-px: $exact-line-height-px % 4;
 
@@ -82,4 +82,29 @@
   $fitted-line-height-factor: $fitted-line-height-px / $font-size;
 
   @return $fitted-line-height-factor;
+}
+
+@mixin gradient-animation($start, $end, $transTime) {
+  background-size: 100%;
+  background-image: linear-gradient($start, $end);
+  position: relative;
+  z-index: 100;
+  &:before {
+    background-image: linear-gradient($end, $start);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    z-index: -100;
+    transition: opacity $transTime;
+  }
+  &:hover {
+    &:before {
+      opacity: 1;
+    }
+  }
 }

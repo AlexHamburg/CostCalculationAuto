@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UtilityService } from '../../../services/utility.service';
 import { SnackbarComponent } from '../../snackbar/snackbar.component';
 import { initData } from './init-data.json';
 @Component({
@@ -15,9 +14,10 @@ export class CostCalculationComponent {
   secondInputGroup: InputMetadata[] = initData.secondInputGroup;
   thirdInputGroup: InputMetadata[] = initData.thirdInputGroup;
 
+  @Output() calculationResult = new EventEmitter<CalculationResult>();
+
   constructor(
     private formBuilder: FormBuilder,
-    private utilityService: UtilityService,
     private snackbarComponent: SnackbarComponent
   ) {
     this.costCalculationForm = this.formBuilder.group({
@@ -94,51 +94,139 @@ export class CostCalculationComponent {
         'Error'
       );
     } else {
-      const carPrice: number = this.prepareInputsValue(
+      const carPrice: number = this.prepareInputsReqValue(
         this.costCalculationForm.get('carPrice')?.value
       );
-      const owningPeriod: number = this.prepareInputsValue(
+      const owningPeriod: number = this.prepareInputsReqValue(
         this.costCalculationForm.get('owningPeriod')?.value
       );
-      const cleanCarInYear: string = this.costCalculationForm.get(
-        'cleanCarInYear'
-      )?.value;
-      const cleanCarPrice: string = this.costCalculationForm.get(
-        'cleanCarPrice'
-      )?.value;
-      const insurancePrice: string = this.costCalculationForm.get(
-        'insurancePrice'
-      )?.value;
-      const lossOfValue: string = this.costCalculationForm.get('lossOfValue')
-        ?.value;
-      const taxYear: string = this.costCalculationForm.get('taxYear')?.value;
-      const fuelConsumptionKm: string = this.costCalculationForm.get(
-        'fuelConsumptionKm'
-      )?.value;
-      const avgFuelPrice: string = this.costCalculationForm.get('avgFuelPrice')
-        ?.value;
-      const opportunityCost: string = this.costCalculationForm.get(
-        'opportunityCost'
-      )?.value;
-      const parkplaceCost: string = this.costCalculationForm.get(
-        'parkplaceCost'
-      )?.value;
-      const countInspectionsInYear: string = this.costCalculationForm.get(
-        'countInspectionsInYear'
-      )?.value;
-      const inspectionPrice: string = this.costCalculationForm.get(
-        'inspectionPrice'
-      )?.value;
+      const kmInYear: number = this.costCalculationForm.get('kmInYear')?.value;
+      const cleanCarInYear: number = this.prepareInputsValue(
+        this.costCalculationForm.get('cleanCarInYear')?.value
+      );
+      const cleanCarPrice: number = this.prepareInputsValue(
+        this.costCalculationForm.get('cleanCarPrice')?.value
+      );
+      const insurancePrice: number = this.prepareInputsValue(
+        this.costCalculationForm.get('insurancePrice')?.value
+      );
+      const lossOfValue: number = this.prepareInputsValue(
+        this.costCalculationForm.get('lossOfValue')?.value
+      );
+      const taxYear: number = this.prepareInputsValue(
+        this.costCalculationForm.get('taxYear')?.value
+      );
+      const fuelConsumptionKm: number = this.prepareInputsValue(
+        this.costCalculationForm.get('fuelConsumptionKm')?.value
+      );
+      const avgFuelPrice: number = this.prepareInputsValue(
+        this.costCalculationForm.get('avgFuelPrice')?.value
+      );
+      const opportunityCost: number = this.prepareInputsValue(
+        this.costCalculationForm.get('opportunityCost')?.value
+      );
+      const parkplaceCost: number = this.prepareInputsValue(
+        this.costCalculationForm.get('parkplaceCost')?.value
+      );
+      const countInspectionsInYear: number = this.prepareInputsValue(
+        this.costCalculationForm.get('countInspectionsInYear')?.value
+      );
+      const inspectionPrice: number = this.prepareInputsValue(
+        this.costCalculationForm.get('inspectionPrice')?.value
+      );
+      const result: CalculationResult = this.calculateCosts({
+        carPrice: carPrice,
+        owningPeriod: owningPeriod,
+        kmInYear: kmInYear,
+        cleanCarInYear: cleanCarInYear,
+        cleanCarPrice: cleanCarPrice,
+        insurancePrice: insurancePrice,
+        lossOfValue: lossOfValue,
+        taxYear: taxYear,
+        fuelConsumptionKm: fuelConsumptionKm,
+        avgFuelPrice: avgFuelPrice,
+        opportunityCost: opportunityCost,
+        parkplaceCost: parkplaceCost,
+        countInspectionsInYear: countInspectionsInYear,
+        inspectionPrice: inspectionPrice,
+      });
+      this.calculationResult.emit(result);
     }
   }
 
-  private prepareInputsValue(value: string): number {
+  private calculateCosts(inputData: InputData): CalculationResult {
+    const totalCost: number = this.calculateTotalCost(inputData);
+    return {
+      totalCost: Math.round(totalCost),
+      monthCost: Math.round(totalCost / (inputData.owningPeriod * 12)),
+      yearCost:
+        inputData.owningPeriod >= 1
+          ? Math.round(totalCost / inputData.owningPeriod)
+          : totalCost,
+      kmCost: inputData.kmInYear
+        ? Math.round((totalCost / inputData.owningPeriod) * inputData.kmInYear)
+        : 0,
+    };
+  }
+
+  private calculateTotalCost(inputData: InputData): number {
+    return (
+      inputData.carPrice +
+      inputData.cleanCarInYear * inputData.cleanCarPrice +
+      inputData.insurancePrice * inputData.owningPeriod +
+      inputData.lossOfValue * inputData.carPrice +
+      inputData.taxYear * inputData.owningPeriod +
+      inputData.fuelConsumptionKm *
+        inputData.avgFuelPrice *
+        inputData.owningPeriod *
+        inputData.kmInYear +
+      inputData.opportunityCost * inputData.carPrice * inputData.owningPeriod +
+      inputData.parkplaceCost * inputData.owningPeriod * 12 +
+      inputData.countInspectionsInYear *
+        inputData.inspectionPrice *
+        inputData.owningPeriod
+    );
+  }
+
+  private prepareInputsReqValue(value: string): number {
     return value.indexOf(',') >= 0 ? +value.replace(',', '.') : +value;
+  }
+
+  private prepareInputsValue(value: string): number {
+    if (value) {
+      return value.indexOf(',') >= 0 ? +value.replace(',', '.') : +value;
+    } else {
+      return 0;
+    }
   }
 }
 
-interface InputMetadata {
+type InputMetadata = {
   lable: string;
   formControlName: string;
   placeholder: string;
-}
+};
+
+type InputData = {
+  carPrice: number;
+  owningPeriod: number;
+  kmInYear: number;
+  cleanCarInYear: number;
+  cleanCarPrice: number;
+  insurancePrice: number;
+  lossOfValue: number;
+  taxYear: number;
+  fuelConsumptionKm: number;
+  avgFuelPrice: number;
+  opportunityCost: number;
+  parkplaceCost: number;
+  countInspectionsInYear: number;
+  inspectionPrice: number;
+};
+
+export type CalculationResult = {
+  kmCost: number;
+  monthCost: number;
+  yearCost: number;
+  totalCost: number;
+};

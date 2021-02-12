@@ -3,41 +3,37 @@
 @import '../../../styles/spacing';
 
 .cost-result-page {
-    height: 100vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: $p-secondary-color-dark;
+  background-color: $bg-dark;
+  justify-content: space-between;
+
+  .results-cntr {
+    &-txt {
+      font-weight: $p-font-weight-semibold;
+      font-size: $p-font-size-medium;
+      margin: $p-spacing-56 $p-spacing-40;
+
+      &__key {
+      }
+    }
+  }
+
+  .btn-cntr {
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    color: $p-secondary-color-dark;
-    background-color: $bg-dark;
-    justify-content: space-between;
+    justify-content: center;
+    margin-bottom: $p-spacing-16;
 
-    .results-cntr {
-        &-txt {
-            font-weight: $p-font-weight-semibold;
-            font-size: $p-font-size-medium;
-            margin: $p-spacing-56 $p-spacing-40;
-
-            &__key {
-                
-            }
-        }
+    &__btn {
+      width: 25%;
+      font-size: $p-font-size-small;
+      max-height: 70px;
+      max-width: 600px;
+      box-shadow: 1px 1px 1px $shadow-color;
+      @include gradient-animation($main-color, $secondary-color, 1.5s);
     }
-
-    .btn-cntr {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        margin-bottom:  $p-spacing-16;
-
-        &__btn {
-            width: 25%;
-            font-size: $p-font-size-small;
-            max-height: 70px;
-            max-width: 600px;
-            box-shadow: 1px 1px 1px $shadow-color;
-
-            &:hover {
-                background-color: #ef5350
-            }
-        }
-    }
+  }
 }

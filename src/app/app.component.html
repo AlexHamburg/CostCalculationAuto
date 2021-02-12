@@ -3,10 +3,12 @@
     <app-main-page></app-main-page>
   </div>
   <div class="home-page home-cost-calculation">
-    <app-cost-calculation></app-cost-calculation>
+    <app-cost-calculation
+      (calculationResult)="receiveCalculResult($event)"
+    ></app-cost-calculation>
   </div>
   <div class="home-page home-cost-result">
-    <app-cost-result></app-cost-result>
+    <app-cost-result [calculResult]="calculResult"></app-cost-result>
   </div>
   <div class="home-page home-alternative-options">
     <app-alternative-options></app-alternative-options>

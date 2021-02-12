@@ -44,19 +44,19 @@
         "placeholder": "Steuersatz in Euro"
       },
       {
-        "lable": "∅ Kraffstoffverbrauch pro km.",
+        "lable": "∅ Kraffstoffverbrauch liter/km.",
         "formControlName": "fuelConsumptionKm",
         "placeholder": "Kraffstoffverbrauch pro km."
       },
       {
-        "lable": "∅ Kraffstoffpreis für l.",
+        "lable": "∅ Kraffstoffpreis für Liter",
         "formControlName": "avgFuelPrice",
         "placeholder": "Kraffstoffpreis Euro für liter"
       }
     ],
     "thirdInputGroup": [
       {
-        "lable": "Opportunitätskosten",
+        "lable": "Opportunitätskosten pro Jahr",
         "formControlName": "opportunityCost",
         "placeholder": "Opportunitätskosten in %"
       },

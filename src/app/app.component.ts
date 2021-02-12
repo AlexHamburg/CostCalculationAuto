@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CalculationResult } from './components/home/cost-calculation/cost-calculation.component';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  calculResult: CalculationResult = {
+    kmCost: 0,
+    monthCost: 0,
+    yearCost: 0,
+    totalCost: 0,
+  };
+
   title = 'cost-calculation-auto';
+
+  receiveCalculResult(calculationResult: CalculationResult) {
+    this.calculResult = calculationResult;
+  }
 }
