@@ -1,75 +1,96 @@
 <div class="cost-calculation">
-    <div class="title-cntr">
-        <h1 class="title-cntr__title">Kostenberechnung</h1>
+  <div class="title-cntr">
+    <h1 class="title-cntr__title">Kostenberechnung</h1>
+  </div>
+  <form
+    class="inputs-form"
+    [formGroup]="costCalculationForm"
+    (ngSubmit)="submitForm()"
+    novalidate
+  >
+    <div class="inputs-cntr">
+      <div class="inputs-cntr__group">
+        <div class="inputs-for-loop" *ngFor="let input of firstInputGroup">
+          <mat-form-field class="inputs-for-loop__input">
+            <mat-label>{{ input.lable }}</mat-label>
+            <input
+              matInput
+              formControlName="{{ input.formControlName }}"
+              placeholder="{{ input.placeholder }}"
+            />
+          </mat-form-field>
+          <p
+            *ngIf="
+              costCalculationForm.controls[input.formControlName]?.hasError(
+                'pattern'
+              ) &&
+              (costCalculationForm.controls[input.formControlName].dirty ||
+                costCalculationForm.controls[input.formControlName].touched)
+            "
+            class="text-danger"
+          >
+            Nur Zahlen eingegeben werden dürfen.
+          </p>
+        </div>
+      </div>
+      <div class="inputs-cntr__group">
+        <div class="inputs-for-loop" *ngFor="let input of secondInputGroup">
+          <mat-form-field class="inputs-for-loop__input">
+            <mat-label>{{ input.lable }}</mat-label>
+            <input
+              matInput
+              formControlName="{{ input.formControlName }}"
+              placeholder="{{ input.placeholder }}"
+            />
+          </mat-form-field>
+          <p
+            *ngIf="
+              costCalculationForm.controls[input.formControlName]?.hasError(
+                'pattern'
+              ) &&
+              (costCalculationForm.controls[input.formControlName].dirty ||
+                costCalculationForm.controls[input.formControlName].touched)
+            "
+            class="text-danger"
+          >
+            Nur Zahlen eingegeben werden dürfen.
+          </p>
+        </div>
+      </div>
+      <div class="inputs-cntr__group">
+        <div class="inputs-for-loop" *ngFor="let input of thirdInputGroup">
+          <mat-form-field class="inputs-for-loop__input">
+            <mat-label>{{ input.lable }}</mat-label>
+            <input
+              matInput
+              formControlName="{{ input.formControlName }}"
+              placeholder="{{ input.placeholder }}"
+            />
+          </mat-form-field>
+          <p
+            *ngIf="
+              costCalculationForm.controls[input.formControlName]?.hasError(
+                'pattern'
+              ) &&
+              (costCalculationForm.controls[input.formControlName].dirty ||
+                costCalculationForm.controls[input.formControlName].touched)
+            "
+            class="text-danger"
+          >
+            Nur Zahlen eingegeben werden dürfen.
+          </p>
+        </div>
+      </div>
     </div>
-    <form 
-        class="inputs-form"
-        [formGroup]="costCalculationForm" 
-        (ngSubmit)="submitForm()"
-        novalidate>
-        <div class="inputs-cntr">
-            <div class="inputs-cntr__group">
-                <div class="inputs-for-loop" *ngFor="let input of firstInputGroup">
-                    <mat-form-field class="inputs-for-loop__input">
-                        <mat-label>{{ input.lable }}</mat-label>
-                        <input 
-                            matInput 
-                            formControlName="{{ input.formControlName }}"
-                            placeholder="{{ input.placeholder }}">
-                    </mat-form-field>
-                    <p 
-                        *ngIf="costCalculationForm.controls[input.formControlName]?.hasError('pattern')
-                            && (costCalculationForm.controls[input.formControlName].dirty 
-                            || costCalculationForm.controls[input.formControlName].touched)"
-                        class="text-danger">
-                        Nur Zahlen eingegeben werden dürfen.
-                    </p>
-                </div>            
-            </div>
-            <div class="inputs-cntr__group">
-                <div class="inputs-for-loop" *ngFor="let input of secondInputGroup">
-                    <mat-form-field class="inputs-for-loop__input">
-                        <mat-label>{{ input.lable }}</mat-label>
-                        <input 
-                            matInput 
-                            formControlName="{{ input.formControlName }}"
-                            placeholder="{{ input.placeholder }}">
-                    </mat-form-field>
-                    <p 
-                        *ngIf="costCalculationForm.controls[input.formControlName]?.hasError('pattern')
-                            && (costCalculationForm.controls[input.formControlName].dirty 
-                            || costCalculationForm.controls[input.formControlName].touched)"
-                        class="text-danger">
-                        Nur Zahlen eingegeben werden dürfen.
-                    </p>
-                </div>
-            </div>
-            <div class="inputs-cntr__group">
-                <div class="inputs-for-loop" *ngFor="let input of thirdInputGroup">
-                    <mat-form-field class="inputs-for-loop__input">
-                        <mat-label>{{ input.lable }}</mat-label>
-                        <input 
-                            matInput 
-                            formControlName="{{ input.formControlName }}"
-                            placeholder="{{ input.placeholder }}">
-                    </mat-form-field>
-                    <p 
-                        *ngIf="costCalculationForm.controls[input.formControlName]?.hasError('pattern')
-                            && (costCalculationForm.controls[input.formControlName].dirty 
-                            || costCalculationForm.controls[input.formControlName].touched)"
-                        class="text-danger">
-                        Nur Zahlen eingegeben werden dürfen.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="btn-cntr">
-            <button mat-flat-button 
-                color="primary"
-                class="btn-cntr__btn"
-                type="submit">
-                BERECHNEN
-            </button>
-        </div>
-    </form>
+    <div class="btn-cntr">
+      <button
+        mat-flat-button
+        color="primary"
+        class="btn-cntr__btn"
+        type="submit"
+      >
+        BERECHNEN
+      </button>
+    </div>
+  </form>
 </div>
