@@ -84,6 +84,9 @@
   @return $fitted-line-height-factor;
 }
 
+/**
+  * Create gradient animation
+  */
 @mixin gradient-animation($start, $end, $transTime) {
   background-size: 100%;
   background-image: linear-gradient($start, $end);

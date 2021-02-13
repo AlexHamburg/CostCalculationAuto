@@ -51,7 +51,7 @@
       {
         "lable": "∅ Kraffstoffpreis für Liter",
         "formControlName": "avgFuelPrice",
-        "placeholder": "Kraffstoffpreis Euro für liter"
+        "placeholder": "Kraffstoffpreis Euro/Liter"
       }
     ],
     "thirdInputGroup": [

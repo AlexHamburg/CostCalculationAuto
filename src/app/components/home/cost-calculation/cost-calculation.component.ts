@@ -151,6 +151,7 @@ export class CostCalculationComponent {
         inspectionPrice: inspectionPrice,
       });
       this.calculationResult.emit(result);
+      this.scrollToresultsPage();
     }
   }
 
@@ -197,6 +198,16 @@ export class CostCalculationComponent {
       return value.indexOf(',') >= 0 ? +value.replace(',', '.') : +value;
     } else {
       return 0;
+    }
+  }
+
+  private scrollToresultsPage(): void {
+    const costCalculationResultPage = document.querySelector('#costResultPage');
+    if (costCalculationResultPage) {
+      costCalculationResultPage.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
     }
   }
 }
