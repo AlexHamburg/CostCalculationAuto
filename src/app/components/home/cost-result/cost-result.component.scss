@@ -3,11 +3,11 @@
 @import '../../../styles/spacing';
 
 .cost-result-page {
-  height: 100vh;
   display: flex;
   flex-direction: column;
   color: $p-secondary-color-dark;
-  background-color: $bg-dark;
+  background: $bg-dark;
+  background: linear-gradient($bg-dark 80%, $bg-light);
   justify-content: space-between;
 
   .results-cntr {
@@ -15,9 +15,6 @@
       font-weight: $p-font-weight-semibold;
       font-size: $p-font-size-medium;
       margin: $p-spacing-56 $p-spacing-40;
-
-      &__key {
-      }
     }
   }
 

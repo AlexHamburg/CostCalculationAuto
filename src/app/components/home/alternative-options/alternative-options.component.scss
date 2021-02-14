@@ -6,6 +6,7 @@
   height: 75vh;
   display: flex;
   flex-direction: column;
-  background-color: $bg-light;
+  background: $bg-light;
+  background: linear-gradient($bg-light 80%, $bg-dark);
   color: $p-secondary-color-dark;
 }
