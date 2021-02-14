@@ -3,9 +3,49 @@
 @import '../../../styles/spacing';
 
 .footer-page {
-    height: 50vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $bg-dark;
+  color: $p-secondary-color-dark;
+
+  .title-cntr__title {
+    font-size: $p-font-size-small;
+    text-shadow: none;
+    text-align: center;
+  }
+
+  .footer-social {
+    width: 100%;
+    height: $p-spacing-40;
     display: flex;
-    flex-direction: column;
-    background-color: $bg-dark;
-    color: $p-secondary-color-dark;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+
+    .social-btn {
+      width: $p-spacing-32;
+      margin: $p-spacing-4 $p-spacing-16;
+      height: $p-spacing-32;
+      background-size: $p-spacing-32 $p-spacing-32;
+    }
+
+    .social-btn svg {
+      fill: $secondary-color-light;
+    }
+
+    .social-btn:hover svg {
+      fill: $secondary-color;
+      transform: scale(1.2);
+    }
+  }
+
+  .legal-info-cntr {
+    display: flex;
+    justify-content: space-between;
+    font-size: $p-font-size-x-small;
+
+    &__txt {
+      margin: 0 $p-spacing-16 $p-spacing-8;
+    }
+  }
 }
