@@ -10,13 +10,36 @@
   background: linear-gradient($bg-dark 80%, $bg-light);
   justify-content: space-between;
 
-  .results-cntr {
-    &-txt {
-      font-size: $p-font-size-medium;
-      margin: $p-spacing-56 $p-spacing-40;
+  .results {
+    &-cntr {
+      &-txt {
+        font-size: $p-font-size-medium;
+        margin: $p-spacing-56 $p-spacing-40;
 
-      &__key {
-        font-weight: $p-font-weight-semibold;
+        &__key {
+          font-weight: $p-font-weight-semibold;
+        }
+      }
+    }
+
+    &-wrapper {
+      display: flex;
+      justify-content: space-between;
+
+      .ctn-download-cntr {
+        padding: $p-spacing-16;
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &__btn {
+          font-size: $p-font-size-medium;
+          max-width: 600px;
+          box-shadow: 1px 1px 1px $shadow-color;
+          text-align: center;
+          @include gradient-animation($main-color, $secondary-color, 1.5s);
+        }
       }
     }
   }

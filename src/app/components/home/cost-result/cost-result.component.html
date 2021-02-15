@@ -2,39 +2,42 @@
   <div class="title-cntr">
     <h1 class="title-cntr__title">Ergebnis</h1>
   </div>
-  <div class="results-cntr">
-    <div class="results-cntr-txt">
-      <span class="results-cntr-txt__key"> Kosten pro km.: </span>
-      <span class="results-cntr-txt__result">
-        {{ calculResult.kmCost }} Geldeinheiten
-      </span>
+  <div class="results-wrapper">
+    <div class="results-cntr">
+      <div class="results-cntr-txt">
+        <span class="results-cntr-txt__key"> Kosten pro km.: </span>
+        <span class="results-cntr-txt__result">
+          {{ calculResult.kmCost }} Geldeinheiten
+        </span>
+      </div>
+      <div class="results-cntr-txt">
+        <span class="results-cntr-txt__key"> Kosten pro Monat: </span>
+        <span class="results-cntr-txt__result">
+          {{ calculResult.monthCost }} Geldeinheiten
+        </span>
+      </div>
+      <div class="results-cntr-txt">
+        <span class="results-cntr-txt__key"> Kosten pro Jahr: </span>
+        <span class="results-cntr-txt__result">
+          {{ calculResult.yearCost }} Geldeinheiten
+        </span>
+      </div>
+      <div class="results-cntr-txt">
+        <span class="results-cntr-txt__key"> Gesamtkosten: </span>
+        <span class="results-cntr-txt__result">
+          {{ calculResult.totalCost }} Geldeinheiten
+        </span>
+      </div>
     </div>
-    <div class="results-cntr-txt">
-      <span class="results-cntr-txt__key"> Kosten pro Monat: </span>
-      <span class="results-cntr-txt__result">
-        {{ calculResult.monthCost }} Geldeinheiten
-      </span>
-    </div>
-    <div class="results-cntr-txt">
-      <span class="results-cntr-txt__key"> Kosten pro Jahr: </span>
-      <span class="results-cntr-txt__result">
-        {{ calculResult.yearCost }} Geldeinheiten
-      </span>
-    </div>
-    <div class="results-cntr-txt">
-      <span class="results-cntr-txt__key"> Gesamtkosten: </span>
-      <span class="results-cntr-txt__result">
-        {{ calculResult.totalCost }} Geldeinheiten
-      </span>
-    </div>
-  </div>
-  <div class="ctn-download-cntr">
-    <div
-      class="ctn-download-cntr__btn"
-      title="Share as PDF"
-      (click)="exportPDF()"
-    >
-      PDF HERUNTERLADEN
+    <div class="ctn-download-cntr">
+      <div
+        class="ctn-download-cntr__btn"
+        title="Share as PDF"
+        (click)="exportPDF()"
+      >
+        <p>PDF</p>
+        <p>HERUNTERLADEN</p>
+      </div>
     </div>
   </div>
   <div class="btn-cntr">
