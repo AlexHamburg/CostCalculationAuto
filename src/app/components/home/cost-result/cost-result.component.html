@@ -6,26 +6,35 @@
     <div class="results-cntr-txt">
       <span class="results-cntr-txt__key"> Kosten pro km.: </span>
       <span class="results-cntr-txt__result">
-        {{ calculResult.kmCost }}
+        {{ calculResult.kmCost }} Geldeinheiten
       </span>
     </div>
     <div class="results-cntr-txt">
       <span class="results-cntr-txt__key"> Kosten pro Monat: </span>
       <span class="results-cntr-txt__result">
-        {{ calculResult.monthCost }}
+        {{ calculResult.monthCost }} Geldeinheiten
       </span>
     </div>
     <div class="results-cntr-txt">
       <span class="results-cntr-txt__key"> Kosten pro Jahr: </span>
       <span class="results-cntr-txt__result">
-        {{ calculResult.yearCost }}
+        {{ calculResult.yearCost }} Geldeinheiten
       </span>
     </div>
     <div class="results-cntr-txt">
       <span class="results-cntr-txt__key"> Gesamtkosten: </span>
       <span class="results-cntr-txt__result">
-        {{ calculResult.totalCost }}
+        {{ calculResult.totalCost }} Geldeinheiten
       </span>
+    </div>
+  </div>
+  <div class="ctn-download-cntr">
+    <div
+      class="ctn-download-cntr__btn"
+      title="Share as PDF"
+      (click)="exportPDF()"
+    >
+      PDF HERUNTERLADEN
     </div>
   </div>
   <div class="btn-cntr">

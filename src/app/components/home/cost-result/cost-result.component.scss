@@ -12,9 +12,12 @@
 
   .results-cntr {
     &-txt {
-      font-weight: $p-font-weight-semibold;
       font-size: $p-font-size-medium;
       margin: $p-spacing-56 $p-spacing-40;
+
+      &__key {
+        font-weight: $p-font-weight-semibold;
+      }
     }
   }
 
